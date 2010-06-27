@@ -1,0 +1,159 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mPRAGMA index_list("schema_migrations")[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100626183432)
+  [4;35;1mSQL (0.4ms)[0m   [0mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100626183432')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("users")[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-06-26 14:51:16) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 68ms (View: 61, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#index (for 127.0.0.1 at 2010-06-27 17:42:11) [GET]
+  [4;36;1mUser Load (0.9ms)[0m   [0;1mSELECT * FROM "users" [0m
+Rendering template within layouts/users
+Rendering users/index
+Completed in 72ms (View: 64, DB: 1) | 200 OK [http://localhost/users]
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-06-27 17:43:19) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 16ms (View: 12, DB: 0) | 200 OK [http://localhost/users/new]
+  [4;36;1mSQL (0.4ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20100626183432)
+Migrating to CreateMicroposts (20100627215058)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "microposts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "user_id" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100627215058')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("microposts")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("users")[0m
+
+
+Processing UsersController#new (for 127.0.0.1 at 2010-06-27 17:53:20) [GET]
+Rendering template within layouts/users
+Rendering users/new
+Completed in 22ms (View: 17, DB: 0) | 200 OK [http://localhost/users/new]
+
+
+Processing UsersController#create (for 127.0.0.1 at 2010-06-27 17:53:38) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"ELtB3vVb55f6+tWcLFczw2iUxEiIt8HVM0GzLh+nZj4=", "user"=>{"name"=>"Julian Lebensold", "email"=>"julian@lebensold.ca"}}
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO "users" ("name", "created_at", "updated_at", "email") VALUES('Julian Lebensold', '2010-06-27 21:53:38', '2010-06-27 21:53:38', 'julian@lebensold.ca')[0m
+Redirected to http://localhost:3000/users/1
+Completed in 21ms (DB: 0) | 302 Found [http://localhost/users]
+
+
+Processing UsersController#show (for 127.0.0.1 at 2010-06-27 17:53:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering template within layouts/users
+Rendering users/show
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/users/1]
+
+
+Processing MicropostsController#new (for 127.0.0.1 at 2010-06-27 17:53:53) [GET]
+Rendering template within layouts/microposts
+Rendering microposts/new
+Completed in 23ms (View: 17, DB: 0) | 200 OK [http://localhost/microposts/new]
+
+
+Processing MicropostsController#create (for 127.0.0.1 at 2010-06-27 17:54:44) [POST]
+  Parameters: {"commit"=>"Create", "micropost"=>{"user_id"=>"Julian Lebensold", "content"=>"This is the first of many posts to come."}, "authenticity_token"=>"ELtB3vVb55f6+tWcLFczw2iUxEiIt8HVM0GzLh+nZj4="}
+  [4;36;1mMicropost Create (0.6ms)[0m   [0;1mINSERT INTO "microposts" ("created_at", "updated_at", "user_id", "content") VALUES('2010-06-27 21:54:44', '2010-06-27 21:54:44', 0, 'This is the first of many posts to come.')[0m
+Redirected to http://localhost:3000/microposts/1
+Completed in 86ms (DB: 1) | 302 Found [http://localhost/microposts]
+
+
+Processing MicropostsController#show (for 127.0.0.1 at 2010-06-27 17:54:44) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mMicropost Load (0.2ms)[0m   [0mSELECT * FROM "microposts" WHERE ("microposts"."id" = 1) [0m
+Rendering template within layouts/microposts
+Rendering microposts/show
+Completed in 11ms (View: 6, DB: 0) | 200 OK [http://localhost/microposts/1]
+
+
+Processing MicropostsController#edit (for 127.0.0.1 at 2010-06-27 17:54:55) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mMicropost Load (0.2ms)[0m   [0;1mSELECT * FROM "microposts" WHERE ("microposts"."id" = 1) [0m
+Rendering template within layouts/microposts
+Rendering microposts/edit
+Completed in 16ms (View: 11, DB: 0) | 200 OK [http://localhost/microposts/1/edit]
+
+
+Processing MicropostsController#index (for 127.0.0.1 at 2010-06-27 17:54:57) [GET]
+  [4;35;1mMicropost Load (0.4ms)[0m   [0mSELECT * FROM "microposts" [0m
+Rendering template within layouts/microposts
+Rendering microposts/index
+Completed in 14ms (View: 9, DB: 0) | 200 OK [http://localhost/microposts]
+
+
+Processing MicropostsController#show (for 127.0.0.1 at 2010-06-27 17:55:05) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mMicropost Load (0.2ms)[0m   [0;1mSELECT * FROM "microposts" WHERE ("microposts"."id" = 1) [0m
+Rendering template within layouts/microposts
+Rendering microposts/show
+Completed in 7ms (View: 2, DB: 0) | 200 OK [http://localhost/microposts/1]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+  [4;35;1mMicropost Load (0.3ms)[0m   [0mSELECT * FROM "microposts" WHERE ("microposts".user_id = 1) [0m
+
+
+Processing MicropostsController#edit (for 127.0.0.1 at 2010-06-27 18:03:20) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mMicropost Load (0.2ms)[0m   [0;1mSELECT * FROM "microposts" WHERE ("microposts"."id" = 1) [0m
+Rendering template within layouts/microposts
+Rendering microposts/edit
+Completed in 27ms (View: 18, DB: 0) | 200 OK [http://localhost/microposts/1/edit]
+
+
+Processing MicropostsController#update (for 127.0.0.1 at 2010-06-27 18:03:27) [PUT]
+  Parameters: {"commit"=>"Update", "micropost"=>{"user_id"=>"1", "content"=>"This is the first of many posts to come."}, "authenticity_token"=>"ELtB3vVb55f6+tWcLFczw2iUxEiIt8HVM0GzLh+nZj4=", "id"=>"1"}
+  [4;35;1mMicropost Load (0.2ms)[0m   [0mSELECT * FROM "microposts" WHERE ("microposts"."id" = 1) [0m
+  [4;36;1mMicropost Update (0.4ms)[0m   [0;1mUPDATE "microposts" SET "updated_at" = '2010-06-27 22:03:27', "user_id" = 1 WHERE "id" = 1[0m
+Redirected to http://localhost:3000/microposts/1
+Completed in 23ms (DB: 1) | 302 Found [http://localhost/microposts/1]
+
+
+Processing MicropostsController#show (for 127.0.0.1 at 2010-06-27 18:03:27) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mMicropost Load (0.2ms)[0m   [0mSELECT * FROM "microposts" WHERE ("microposts"."id" = 1) [0m
+Rendering template within layouts/microposts
+Rendering microposts/show
+Completed in 13ms (View: 7, DB: 0) | 200 OK [http://localhost/microposts/1]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 1[0m
+  [4;35;1mMicropost Load (0.4ms)[0m   [0mSELECT * FROM "microposts" WHERE ("microposts".user_id = 1) [0m
